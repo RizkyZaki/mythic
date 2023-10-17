@@ -29,7 +29,7 @@ quiz_val = int(input("Masukkan Nilai Quiz : "))
 uts_val = int(input("Masukkan Nilai UTS : "))
 uas_val = int(input("Masukkan Nilai UAS : "))
 rata2 = tugas_val + quiz_val + uts_val + uas_val
-hasil = rata2 / 4
+hasil = rata2 // 4
 
 nama = input("Masukkan Nama : ")
 nim = input("Masukkan NIM : ")
