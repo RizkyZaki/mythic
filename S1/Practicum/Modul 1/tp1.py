@@ -5,6 +5,7 @@ m = int(input("Masukkan Jumlah Cucu Pak Dengklek : "))
 x = n/m
 y = n%m
 
+print(type(x))
 print(f"Ikan Cupang Dibagi Masing Masing {int(x)}")
 print(f"Bersisa {int(y)}")
 
@@ -36,3 +37,4 @@ nim = input("Masukkan NIM : ")
 kelas = input("Masukkan Kelas : ")
 
 print(f"Nilai MK Pemrograman Dan Logika milik {nama} dengan NIM {nim} Kelas {kelas} adalah {int(hasil)}")
+print(type(tugas_val))
