@@ -11,7 +11,6 @@ else:
 # Tugas 2
 value = int(input("Masukkan nilai : "))
 
-# Mengonversi nilai menjadi indeks huruf
 if value >= 80 and value <= 100:
     index = "A"
 elif value >= 70 and value <= 79:
@@ -29,5 +28,4 @@ elif value >= 0 and value <= 29:
 else:
     index = "NILAI DILUAR JANGKAUAN"
 
-# Menampilkan indeks huruf
 print(index)
