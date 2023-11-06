@@ -64,6 +64,3 @@ else:
         total_harga += 1000
     print(f"Total Harga Barang : Rp {total_harga} Bayar menggunakan {pilih_metode_pembayaran}")
   
-    
-
-
