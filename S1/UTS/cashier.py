@@ -1,20 +1,23 @@
-def display_menu():
+# NIM: 102022300080
+# NAMA: Rizky Zaki Zulkarnaen
+
+def display_menu_0080():
     print("Menu Utama:")
     print("1. Makanan")
     print("2. Minuman")
 
-def display_sub_menu(items):
+def display_sub_menu_0080(items):
     for i, item in enumerate(items, start=1):
         print(f"{i}. {item['nama']} - Rp. {item['harga']}")
 
-def calculate_total(items):
-    total = 0
+def calculate_total_0080(items):
+    total_0080 = 0
     for item in items:
-        total += item['harga'] * item['jumlah']
-    return total
+        total_0080 += item['harga'] * item['jumlah']
+    return total_0080
 
-def main():
-    makanan = [
+def main_0080():
+    makanan_0080 = [
         {'nama': 'Nasi Goreng', 'harga': 20000},
         {'nama': 'Ayam Bakar', 'harga': 25000},
         {'nama': 'Sate Ayam', 'harga': 15000},
@@ -22,7 +25,7 @@ def main():
         {'nama': 'Nasi Uduk', 'harga': 22000}
     ]
 
-    minuman = [
+    minuman_0080 = [
         {'nama': 'Es Teh', 'harga': 5000},
         {'nama': 'Es Jeruk', 'harga': 6000},
         {'nama': 'Jus Mangga', 'harga': 12000},
@@ -30,67 +33,67 @@ def main():
         {'nama': 'Air Mineral', 'harga': 3000}
     ]
 
-    display_menu()
-    kategori = int(input("Pilih kategori (1/2): "))
+    display_menu_0080()
+    kategori_0080 = int(input("Pilih kategori (1/2): "))
 
-    if kategori == 1:
-        display_sub_menu(makanan)
-        pesanan = makanan
-    elif kategori == 2:
-        display_sub_menu(minuman)
-        pesanan = minuman
+    if kategori_0080 == 1:
+        display_sub_menu_0080(makanan_0080)
+        pesanan_0080 = makanan_0080
+    elif kategori_0080 == 2:
+        display_sub_menu_0080(minuman_0080)
+        pesanan_0080 = minuman_0080
     else:
         print("Pilihan kategori tidak valid.")
         return
 
-    total_harga = 0
-    items_pilihan = []
+    total_harga_0080 = 0
+    items_pilihan_0080 = []
 
     while True:
-        nomor_item = int(input("Pilih nomor item yang akan dibeli (0 untuk selesai): "))
-        if nomor_item == 0:
+        nomor_item_0080 = int(input("Pilih nomor item yang akan dibeli (0 untuk selesai): "))
+        if nomor_item_0080 == 0:
             break
-        elif nomor_item < 1 or nomor_item > len(pesanan):
+        elif nomor_item_0080 < 1 or nomor_item_0080 > len(pesanan_0080):
             print("Nomor item tidak valid.")
             continue
 
-        jumlah_item = int(input("Masukkan jumlah item yang akan dibeli: "))
-        item = pesanan[nomor_item - 1]
-        items_pilihan.append({'nama': item['nama'], 'jumlah': jumlah_item, 'harga': item['harga']})
-        total_harga += item['harga'] * jumlah_item
+        jumlah_item_0080 = int(input("Masukkan jumlah item yang akan dibeli: "))
+        item_0080 = pesanan_0080[nomor_item_0080 - 1]
+        items_pilihan_0080.append({'nama': item_0080['nama'], 'jumlah': jumlah_item_0080, 'harga': item_0080['harga']})
+        total_harga_0080 += item_0080['harga'] * jumlah_item_0080
 
     print("\nPesanan Anda:")
-    for item in items_pilihan:
-        print(f"{item['nama']} - {item['jumlah']} pcs - Rp. {item['harga'] * item['jumlah']}")
+    for item_0080 in items_pilihan_0080:
+        print(f"{item_0080['nama']} - {item_0080['jumlah']} pcs - Rp. {item_0080['harga'] * item_0080['jumlah']}")
 
-    print("\nTotal Harga: Rp.", total_harga)
+    print("\nTotal Harga: Rp.", total_harga_0080)
 
-    diskon = 0
-    if total_harga > 500000:
-        diskon = 0.25
-    elif total_harga > 250000:
-        diskon = 0.15
-    elif total_harga > 100000:
-        diskon = 0.1
+    diskon_0080 = 0
+    if total_harga_0080 > 500000:
+        diskon_0080 = 0.25
+    elif total_harga_0080 > 250000:
+        diskon_0080 = 0.15
+    elif total_harga_0080 > 100000:
+        diskon_0080 = 0.1
 
-    total_akhir = total_harga - (total_harga * diskon)
+    total_akhir_0080 = total_harga_0080 - (total_harga_0080 * diskon_0080)
 
-    nim = input("Masukkan NIM: ")
-    nama = input("Masukkan Nama: ")
+    nim_0080 = input("Masukkan NIM: ")
+    nama_0080 = input("Masukkan Nama: ")
 
-    nominal_pembayaran = float(input("Masukkan nominal pembayaran: "))
-    kembalian = nominal_pembayaran - total_akhir
+    nominal_pembayaran_0080 = float(input("Masukkan nominal pembayaran: "))
+    kembalian_0080 = nominal_pembayaran_0080 - total_akhir_0080
 
     print("\nStruk Pembayaran:")
-    print(f"NIM: {nim}")
-    print(f"Nama: {nama}")
-    for item in items_pilihan:
-        print(f"{item['nama']} - {item['jumlah']} pcs - Rp. {item['harga'] * item['jumlah']}")
-    print(f"Total Harga: Rp. {total_harga}")
-    print(f"Diskon: {diskon * 100}%")
-    print(f"Total Akhir: Rp. {total_akhir}")
-    print(f"Nominal Pembayaran: Rp. {nominal_pembayaran}")
-    print(f"Kembalian: Rp. {kembalian}")
+    print(f"NIM: {nim_0080}")
+    print(f"Nama: {nama_0080}")
+    for item_0080 in items_pilihan_0080:
+        print(f"{item_0080['nama']} - {item_0080['jumlah']} pcs - Rp. {item_0080['harga'] * item_0080['jumlah']}")
+    print(f"Total Harga: Rp. {total_harga_0080}")
+    print(f"Diskon: {diskon_0080 * 100}%")
+    print(f"Total Akhir: Rp. {total_akhir_0080}")
+    print(f"Nominal Pembayaran: Rp. {nominal_pembayaran_0080}")
+    print(f"Kembalian: Rp. {kembalian_0080}")
 
 if __name__ == "__main__":
-    main()
+    main_0080()

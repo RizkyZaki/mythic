@@ -1,51 +1,47 @@
-class ATM:
-    def __init__(self, nim, nama, no_rekening, pin):
-        self.nim = nim
-        self.nama = nama
-        self.no_rekening = no_rekening
-        self.pin = pin
-        self.saldo = 0
+# NIM: 102022300080
+# NAMA: Rizky Zaki Zulkarnaen
 
-    def login(self):
-        entered_pin = input("Masukkan PIN (6 digit dari NIM): ")
-        if entered_pin == self.pin:
-            print("Login berhasil! Selamat datang,", self.nama)
+def get_pin_from_nim_0080(nim_0080):
+    if len(nim_0080) >= 6:
+        return nim_0080[-6:]
+    else:
+        return None
+
+def login_0080(nim_0080):
+    pin_0080 = get_pin_from_nim_0080(nim_0080)
+    if pin_0080 is not None:
+        entered_pin_0080 = input("Masukkan PIN (6 digit dari NIM): ")
+        if entered_pin_0080 == pin_0080:
+            print("Login berhasil! Selamat datang,", customer_name_0080)
             return True
-        else:
-            print("PIN yang dimasukkan salah.")
-            return False
+    print("PIN yang dimasukkan salah atau tidak valid.")
+    return False
 
-    def cek_saldo(self):
-        print("\nInformasi Rekening:")
-        print("NIM:", self.nim)
-        print("Nama:", self.nama)
-        print("No. Rekening:", self.no_rekening)
-        print("Saldo: Rp.", self.saldo)
+def check_balance_0080(account_number_0080, customer_name_0080, balance_0080):
+    print("\nInformasi Rekening:")
+    print("Nomor Rekening:", account_number_0080)
+    print("Nama Pelanggan:", customer_name_0080)
+    print("Saldo: Rp.", balance_0080)
 
-    def tarik_uang(self):
-        nominal_tarik = float(input("\nMasukkan nominal yang akan ditarik: Rp. "))
-        if nominal_tarik <= self.saldo:
-            self.saldo -= nominal_tarik
-            print("Penarikan berhasil.")
-            self.cek_saldo()
-        else:
-            print("Saldo tidak mencukupi.")
+def withdraw_funds_0080(balance_0080):
+    nominal_tarik_0080 = float(input("\nMasukkan nominal yang akan ditarik: Rp. "))
+    if nominal_tarik_0080 <= balance_0080:
+        balance_0080 -= nominal_tarik_0080
+        print("Penarikan berhasil.")
+        check_balance_0080(account_number_0080, customer_name_0080, balance_0080)
+    else:
+        print("Saldo tidak mencukupi.")
 
-    def setor_uang(self):
-        nominal_setor = float(input("\nMasukkan nominal yang akan disetor: Rp. "))
-        self.saldo += nominal_setor
-        print("Setoran berhasil.")
-        self.cek_saldo()
+def deposit_funds_0080(balance_0080):
+    nominal_setor_0080 = float(input("\nMasukkan nominal yang akan disetor: Rp. "))
+    balance_0080 += nominal_setor_0080
+    print("Setoran berhasil.")
+    check_balance_0080(account_number_0080, customer_name_0080, balance_0080)
 
-def main():
-    nim = input("Masukkan NIM: ")
-    nama = input("Masukkan Nama: ")
-    no_rekening = input("Masukkan No. Rekening: ")
-    pin = input("Masukkan PIN (6 digit dari NIM): ")
+def main_0080(account_number_0080, customer_name_0080, nim_0080):
+    balance_0080 = 0
 
-    atm = ATM(nim, nama, no_rekening, pin)
-
-    if atm.login():
+    if login_0080(nim_0080):
         while True:
             print("\nMenu Utama:")
             print("1. Cek Saldo")
@@ -53,19 +49,22 @@ def main():
             print("3. Setor Uang")
             print("4. Keluar")
 
-            choice = input("Pilih menu (1/2/3/4): ")
+            choice_0080 = input("Pilih menu (1/2/3/4): ")
 
-            if choice == '1':
-                atm.cek_saldo()
-            elif choice == '2':
-                atm.tarik_uang()
-            elif choice == '3':
-                atm.setor_uang()
-            elif choice == '4':
+            if choice_0080 == '1':
+                check_balance_0080(account_number_0080, customer_name_0080, balance_0080)
+            elif choice_0080 == '2':
+                withdraw_funds_0080(balance_0080)
+            elif choice_0080 == '3':
+                deposit_funds_0080(balance_0080)
+            elif choice_0080 == '4':
                 print("Terima kasih. Sampai jumpa!")
                 break
             else:
                 print("Pilihan tidak valid. Silakan coba lagi.")
 
 if __name__ == "__main__":
-    main()
+    account_number_0080 = input("Masukkan Nomor Rekening: ")
+    customer_name_0080 = input("Masukkan Nama Pelanggan: ")
+    nim_0080 = input("Masukkan NIM: ")
+    main_0080(account_number_0080, customer_name_0080, nim_0080)
