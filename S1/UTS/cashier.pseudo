@@ -1,0 +1,84 @@
+Start
+
+Function display_menu():
+    Display "Main Menu:"
+    Display "1. Food"
+    Display "2. Beverage"
+
+Function display_sub_menu(items):
+    For each item in items:
+        Display the item number, item name, and item price
+
+Function calculate_total(items):
+    Initialize total as 0
+    For each item in items:
+        Calculate the total price for the item and add it to total
+    Return total
+
+Function main():
+    Initialize food_menu as a list of food items and their prices
+    Initialize beverage_menu as a list of beverage items and their prices
+
+    Call display_menu()
+    Ask the user to choose a category (1 for food, 2 for beverage) and store it in category
+
+    If category is 1:
+        Call display_sub_menu(food_menu)
+        Set selected_menu to food_menu
+    ElseIf category is 2:
+        Call display_sub_menu(beverage_menu)
+        Set selected_menu to beverage_menu
+    Else:
+        Display "Invalid category choice."
+        Exit the program
+
+    Initialize total_price as 0
+    Initialize selected_items as an empty list
+
+    While True:
+        Ask the user to choose an item number to buy (0 to finish) and store it in item_number
+        If item_number is 0:
+            Exit the loop
+        If item_number is not valid:
+            Display "Invalid item number."
+            Continue the loop
+
+        Ask the user to enter the quantity of the item to buy and store it in quantity
+        Get the selected item from selected_menu
+        Calculate the total price of the item and add it to total_price
+        Add the item to selected_items with the purchased quantity
+
+    Display "Your Order:"
+    For each item in selected_items:
+        Display item name, quantity purchased, and total price
+
+    Display "Total Price: Rp.", total_price
+
+    Initialize discount as 0
+    If total_price is greater than 500000:
+        Set discount to 0.25
+    ElseIf total_price is greater than 250000:
+        Set discount to 0.15
+    ElseIf total_price is greater than 100000:
+        Set discount to 0.1
+
+    Ask the user to enter their NIM (Student ID) and store it in nim
+    Ask the user to enter their name and store it in name
+
+    Ask the user to enter the payment amount and store it in payment_amount
+    Calculate the change
+
+    Display "Payment Receipt:"
+    Display "NIM:", nim
+    Display "Name:", name
+    For each item in selected_items:
+        Display item name, quantity purchased, and total price
+    Display "Total Price: Rp.", total_price
+    Display "Discount:", discount * 100, "%"
+    Display "Final Total: Rp.", total_price - (total_price * discount)
+    Display "Payment Amount: Rp.", payment_amount
+    Display "Change: Rp.", change
+
+Call main() to start the program
+
+End

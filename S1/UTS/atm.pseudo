@@ -1,0 +1,76 @@
+Start
+
+Initialize account_number as a string
+Initialize customer_name as a string
+Initialize nim as a string
+Initialize balance as a float
+
+Function get_pin_from_nim(nim):
+    If the length of nim is greater than or equal to 6:
+        Return the last 6 digits of nim
+    Else:
+        Return None
+
+Function login(nim):
+    pin = get_pin_from_nim(nim)
+    If pin is not None:
+        entered_pin = Input("Enter PIN (6 digits from NIM): ")
+        If entered_pin is equal to pin:
+            Display "Login successful! Welcome," customer_name
+            Return True
+    Display "Incorrect or invalid PIN."
+    Return False
+
+Function check_balance(account_number, customer_name, balance):
+    Display "Account Information:"
+    Display "Account Number:", account_number
+    Display "Customer Name:", customer_name
+    Display "Balance: Rp.", balance
+
+Function withdraw_funds(balance):
+    withdrawal_amount = Input("Enter the amount to withdraw: Rp. ")
+    If withdrawal_amount is less than or equal to balance:
+        balance = balance - withdrawal_amount
+        Display "Withdrawal successful."
+        Call check_balance(account_number, customer_name, balance)
+    Else:
+        Display "Insufficient balance."
+
+Function deposit_funds(balance):
+    deposit_amount = Input("Enter the amount to deposit: Rp. ")
+    balance = balance + deposit_amount
+    Display "Deposit successful."
+    Call check_balance(account_number, customer_name, balance
+
+Function main(account_number, customer_name, nim):
+    balance = 0
+
+    If call to login(nim) returns True:
+        Repeat until exit:
+            Display "Main Menu:"
+            Display "1. Check Balance"
+            Display "2. Withdraw Funds"
+            Display "3. Deposit Funds"
+            Display "4. Exit"
+
+            choice = Input("Choose a menu (1/2/3/4): ")
+
+            If choice is equal to '1':
+                Call check_balance(account_number, customer_name, balance)
+            ElseIf choice is equal to '2':
+                Call withdraw_funds(balance)
+            ElseIf choice is equal to '3':
+                Call deposit_funds(balance)
+            ElseIf choice is equal to '4':
+                Display "Thank you. Goodbye!"
+                Exit the loop
+            Else:
+                Display "Invalid choice. Please try again."
+
+If __name__ is equal to "__main__":
+    account_number = Input("Enter Account Number: ")
+    customer_name = Input("Enter Customer Name: ")
+    nim = Input("Enter NIM: ")
+    Call main(account_number, customer_name, nim)
+
+End

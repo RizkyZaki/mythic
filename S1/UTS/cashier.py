@@ -18,18 +18,18 @@ def calculate_total_0080(items):
 
 def main_0080():
     makanan_0080 = [
-        {'nama': 'Nasi Goreng', 'harga': 20000},
-        {'nama': 'Ayam Bakar', 'harga': 25000},
-        {'nama': 'Sate Ayam', 'harga': 15000},
-        {'nama': 'Mie Goreng', 'harga': 18000},
-        {'nama': 'Nasi Uduk', 'harga': 22000}
+        {'nama': 'Nasi Rames', 'harga': 20000},
+        {'nama': 'Ayam Bakar Madu', 'harga': 25000},
+        {'nama': 'Sate Taichan', 'harga': 15000},
+        {'nama': 'Mie Godok Spesial', 'harga': 18000},
+        {'nama': 'Ayam Rica Rica', 'harga': 22000}
     ]
 
     minuman_0080 = [
         {'nama': 'Es Teh', 'harga': 5000},
         {'nama': 'Es Jeruk', 'harga': 6000},
         {'nama': 'Jus Mangga', 'harga': 12000},
-        {'nama': 'Kopi Hitam', 'harga': 8000},
+        {'nama': 'Es Capucino', 'harga': 8000},
         {'nama': 'Air Mineral', 'harga': 3000}
     ]
 
