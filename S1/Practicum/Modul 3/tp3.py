@@ -39,3 +39,12 @@ else:
     print(f"Tabungan anda kurang {kekurangan} dari {target_tabungan}")
     print(f"Total tabungan Anda sekarang sebesar {total_tabungan} Silahkan menabung lagi")
 
+
+
+# x = int(input("Jumlah barang yang dibeli:"))
+# total = 0 
+# for i in range(1, x + 1):
+#   harga = int(input(f"harga barang ke-{i} : "))
+#   total += harga
+
+# print(f"total harga yang harus dibayarkan : {total}")
