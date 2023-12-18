@@ -5,7 +5,6 @@ TARIF_PER_DETIK = 10000
 MAKSIMAL_WAKTU_PARKIR = 240
 MAX_TRIES = 4
 PIN_ADMIN_PARKIR = "123456"
-
 parking_data = {}
 parking_history = []
 
