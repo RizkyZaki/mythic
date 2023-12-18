@@ -99,7 +99,7 @@ def admin_parkir():
 
         if pilihan == "1":
             if not parking_history:
-                print("Belum ada kendaraan yang parkir.")
+                print("Belum ada kendaraan yang keluar.")
             else:
                 for data in parking_history:
                     print(f"Nomor Plat: {data['nomor_plat']}, Waktu Masuk: {data['waktu_masuk']}, Waktu Keluar: {data['waktu_keluar']}, Durasi Parkir: {data['durasi_parkir']} detik, Biaya Parkir: Rp {data['biaya_parkir']}, Denda: Rp {data['denda']}")
