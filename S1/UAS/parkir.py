@@ -107,7 +107,7 @@ def admin_parkir():
             else:
                 print("=== SELURUH TRANSAKSI PARKIR ===")
                 for index, data in enumerate(parking_history, start=1):
-                    print(f"Transaksi {index}:")
+                    print(f"Transaksi {index}")
                     print(f"Nomor Plat: {data['nomor_plat']}")
                     print(f"Waktu Masuk: {data['waktu_masuk']}")
                     print(f"Waktu Keluar: {data['waktu_keluar']}")
