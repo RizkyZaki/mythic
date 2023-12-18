@@ -33,7 +33,6 @@ def hitung_biaya_parkir(durasi_parkir):
 
     return total_biaya, durasi_parkir, denda
 
-
 def kendaraan_masuk(nomor_plat):
     waktu_masuk = datetime.datetime.now()
     parking_data[nomor_plat] = {"waktu_masuk": waktu_masuk}
@@ -54,11 +53,15 @@ def kendaraan_keluar(nomor_plat):
     if denda > 0:
         print(f"Denda Parkir: Rp {denda}")
 
-    nominal_pembayaran = float(input("Masukkan nominal pembayaran: Rp "))
-
-    while nominal_pembayaran < total_biaya:
-        print("Error: Nominal pembayaran kurang. Silahkan masukkan nominal pembayaran yang cukup.")
-        nominal_pembayaran = float(input("Masukkan nominal pembayaran: Rp "))
+    while True:
+        try:
+            nominal_pembayaran = float(input("Masukkan nominal pembayaran: Rp "))
+            if nominal_pembayaran < total_biaya:
+                print("Error: Nominal pembayaran kurang. Silahkan masukkan nominal pembayaran yang cukup.")
+                continue
+            break
+        except ValueError:
+            print("Error: Masukkan angka yang valid.")
 
     kembalian = nominal_pembayaran - total_biaya
 
@@ -94,20 +97,41 @@ def admin_parkir():
     while True:
         print("=== ADMIN PARKIR ===")
         print("1. Cetak Seluruh Transaksi Parkir")
-        print("2. Kembali ke Menu Utama")
+        print("2. Lihat Seluruh Kendaraan Yang Parkir")
+        print("3. Kembali ke Menu Utama")
         pilihan = input("Pilih menu: ")
 
         if pilihan == "1":
             if not parking_history:
                 print("Belum ada kendaraan yang keluar.")
             else:
-                for data in parking_history:
-                    print(f"Nomor Plat: {data['nomor_plat']}, Waktu Masuk: {data['waktu_masuk']}, Waktu Keluar: {data['waktu_keluar']}, Durasi Parkir: {data['durasi_parkir']} detik, Biaya Parkir: Rp {data['biaya_parkir']}, Denda: Rp {data['denda']}")
+                print("=== SELURUH TRANSAKSI PARKIR ===")
+                for index, data in enumerate(parking_history, start=1):
+                    print(f"Transaksi {index}:")
+                    print(f"Nomor Plat: {data['nomor_plat']}")
+                    print(f"Waktu Masuk: {data['waktu_masuk']}")
+                    print(f"Waktu Keluar: {data['waktu_keluar']}")
+                    print(f"Durasi Parkir: {data['durasi_parkir']} detik")
+                    print(f"Biaya Parkir: Rp {data['biaya_parkir']}")
+                    print(f"Denda: Rp {data['denda']}")
+                    print("=" * 30)
+
         elif pilihan == "2":
+            if not parking_data:
+                print("Tidak ada kendaraan yang parkir.")
+            else:
+                print("=== SELURUH KENDARAAN YANG PARKIR ===")
+                for nomor_plat, data_kendaraan in parking_data.items():
+                    print(f"Nomor Plat: {nomor_plat}")
+                    print(f"Waktu Masuk: {data_kendaraan['waktu_masuk']}")
+                    print("=" * 30)
+
+        elif pilihan == "3":
             break
-       
+
         else:
             print("Pilihan tidak valid.")
+
 
 while True:
     print("=== MENU UTAMA ===")
