@@ -13,7 +13,7 @@ def hitung_biaya_parkir(durasi_parkir):
     durasi_parkir = max(round(durasi_parkir / 60) * 60, 60)
 
     # Perhitungan biaya parkir
-    biaya_parkir = TARIF_PER_DETIK * (durasi_parkir / 60)
+    # biaya_parkir = TARIF_PER_DETIK * (durasi_parkir / 60)
 
     # Perhitungan denda
     if durasi_parkir > MAKSIMAL_WAKTU_PARKIR:
