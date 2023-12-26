@@ -10,27 +10,24 @@ parking_history = []
 
 def hitung_biaya_parkir(durasi_parkir):
     # Pembulatan waktu parkir
-    durasi_parkir = max(round(durasi_parkir / 60) * 60, 60)
+    durasi_parkir = max(round(durasi_parkir / 60), 1) * 60
 
     # Perhitungan biaya parkir
-    # biaya_parkir = TARIF_PER_DETIK * (durasi_parkir / 60)
+    biaya_parkir = TARIF_PER_DETIK * (durasi_parkir / 60)
 
     # Perhitungan denda
     if durasi_parkir > MAKSIMAL_WAKTU_PARKIR:
         denda = biaya_parkir * 0.1
-        durasi_parkir = max(round(durasi_parkir / 60) * 60, 360)
     elif durasi_parkir > 360:
         denda = biaya_parkir * 0.25
-        durasi_parkir = max(round(durasi_parkir / 60) * 60, 480)
     else:
         denda = 0
 
-    # Perhitungan biaya parkir setelah penanganan denda dan pembulatan
-    biaya_parkir = TARIF_PER_DETIK * (durasi_parkir / 60)
-
+    # Perhitungan biaya parkir setelah penanganan denda
     total_biaya = biaya_parkir + denda
 
     return total_biaya, durasi_parkir, denda
+
 
 def kendaraan_masuk(nomor_plat):
     waktu_masuk = datetime.datetime.now()
