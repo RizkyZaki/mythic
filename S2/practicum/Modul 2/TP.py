@@ -24,13 +24,15 @@ def displayAllMhs():
 
 def calculateFinalGrade():
   mhsToCalculate = int(input("Masukkan NIM Mahasiswa untuk menghitung nilai Akhir: "))
+  found = False
   for mhs in dataMhs:
     if mhs['nim'] == mhsToCalculate:
       final_grade = 0.25 * mhs['quiz'] + 0.25 * mhs['task'] + 0.5 * mhs['exam']
       found = True
       print(f"Nilai Akhir dari mahasiswa dengan nama {mhs['nama']}, Nim {mhs['nim']} Adalah {final_grade}")
       break
-  print(f"Tidak ada mahasiswa dengan NIM {mhsToCalculate}")
+    if not found:
+        print(f"Tidak ada mahasiswa dengan NIM {mhsToCalculate}")
 
 
 def listGradeDesc():
