@@ -68,3 +68,17 @@ def main():
 
 
 main()
+
+
+for i in range(3):
+    usn = input("Masukkan username Anda : ")
+    pw = input("Masukkan Password Anda : ")
+    
+    if usn != 'Daspro' or pw != 'ALPROASIK':
+        print('Username atau Password Salah, LOGIN GAGAL')
+        print(f"Percobaan Tersisa {2 - i} Kali")
+    else:
+        print("Selamat, Anda berhasil Login")
+        break
+else:
+    print('Anda telah menggunakan semua percobaan. Coba lagi besok!')
