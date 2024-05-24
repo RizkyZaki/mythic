@@ -1,24 +1,17 @@
-import mysql.connector
 from prettytable import PrettyTable
 import matplotlib.pyplot as plt
+import sqlite3
 
-
-conn = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="modul4"
-)
+conn = sqlite3.connect('inventars_buku.db')
 cursor = conn.cursor()
-
 def create_table(cursor):
-    cursor.execute("SHOW TABLES LIKE 'buku'")
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='buku'")
     result = cursor.fetchone()
     if result:
         print("Tabel sudah ada.")
     else:
         cursor.execute("""CREATE TABLE buku (
-                          id_buku INTEGER PRIMARY KEY AUTO_INCREMENT,
+                          id_buku INTEGER PRIMARY KEY,
                           judul TEXT NOT NULL,
                           penulis TEXT NOT NULL,
                           tahun_terbit INTEGER,
@@ -27,7 +20,6 @@ def create_table(cursor):
                           )""")
         print("Tabel berhasil dibuat.")
 
-
 def insert_book(cursor):
     judul = input("Masukkan judul buku: ")
     penulis = input("Masukkan nama penulis: ")
@@ -35,7 +27,7 @@ def insert_book(cursor):
     genre = input("Masukkan genre buku: ")
     stok = input("Masukkan jumlah stok: ")
 
-    cursor.execute("INSERT INTO buku (judul, penulis, tahun_terbit, genre, stok) VALUES (%s, %s, %s, %s, %s)",
+    cursor.execute("INSERT INTO buku (judul, penulis, tahun_terbit, genre, stok) VALUES (?, ?, ?, ?, ?)",
                    (judul, penulis, tahun_terbit, genre, stok))
     conn.commit()
     print("Data buku berhasil dimasukkan.")
@@ -54,15 +46,14 @@ def display_books(cursor):
 
 def delete_book(cursor):
     id_buku = input("Masukkan ID buku yang akan dihapus: ")
-    cursor.execute("SELECT * FROM buku WHERE id_buku = %s", (id_buku,))
+    cursor.execute("SELECT * FROM buku WHERE id_buku = ?", (id_buku,))
     row = cursor.fetchone()
     if row:
-        cursor.execute("DELETE FROM buku WHERE id_buku = %s", (id_buku,))
+        cursor.execute("DELETE FROM buku WHERE id_buku = ?", (id_buku,))
         conn.commit()
         print("Buku berhasil dihapus.")
     else:
         print("ID buku tidak ditemukan.")
-
 
 def display_data(cursor):
     cursor.execute("SELECT genre, COUNT(*) as count FROM buku GROUP BY genre")
@@ -81,7 +72,6 @@ def display_data(cursor):
         plt.show()
     else:
         print("Tidak ada data buku.")
-
 
 while True:
     print("=====================================")
