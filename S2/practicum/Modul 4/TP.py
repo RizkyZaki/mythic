@@ -2,9 +2,8 @@ from prettytable import PrettyTable
 import matplotlib.pyplot as plt
 import sqlite3
 
-conn = sqlite3.connect('inventars_buku.db')
-cursor = conn.cursor()
-def create_table(cursor):
+
+def buat_tabel(cursor):
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='buku'")
     result = cursor.fetchone()
     if result:
@@ -20,7 +19,7 @@ def create_table(cursor):
                           )""")
         print("Tabel berhasil dibuat.")
 
-def insert_book(cursor):
+def buat_buku(cursor):
     judul = input("Masukkan judul buku: ")
     penulis = input("Masukkan nama penulis: ")
     tahun_terbit = input("Masukkan tahun terbit: ")
@@ -32,7 +31,7 @@ def insert_book(cursor):
     conn.commit()
     print("Data buku berhasil dimasukkan.")
 
-def display_books(cursor):
+def tampilkan_buku(cursor):
     cursor.execute("SELECT * FROM buku")
     rows = cursor.fetchall()
     if rows:
@@ -44,7 +43,7 @@ def display_books(cursor):
     else:
         print("Tidak ada data buku.")
 
-def delete_book(cursor):
+def hapus_buku(cursor):
     id_buku = input("Masukkan ID buku yang akan dihapus: ")
     cursor.execute("SELECT * FROM buku WHERE id_buku = ?", (id_buku,))
     row = cursor.fetchone()
@@ -55,7 +54,7 @@ def delete_book(cursor):
     else:
         print("ID buku tidak ditemukan.")
 
-def display_data(cursor):
+def visualisasi(cursor):
     cursor.execute("SELECT genre, COUNT(*) as count FROM buku GROUP BY genre")
     rows = cursor.fetchall()
     if rows:
@@ -73,6 +72,8 @@ def display_data(cursor):
     else:
         print("Tidak ada data buku.")
 
+conn = sqlite3.connect('inventaris_buku.db')
+cursor = conn.cursor()
 while True:
     print("=====================================")
     print("Menu :")
@@ -86,15 +87,15 @@ while True:
     pilihan = int(input("Masukkan pilihan Anda: "))
 
     if pilihan == 1:
-        create_table(cursor)
+        buat_tabel(cursor)
     elif pilihan == 2:
-        insert_book(cursor)
+        buat_buku(cursor)
     elif pilihan == 3:
-        display_books(cursor)
+        tampilkan_buku(cursor)
     elif pilihan == 4:
-        delete_book(cursor)
+        hapus_buku(cursor)
     elif pilihan == 5:
-        display_data(cursor)
+        visualisasi(cursor)
     elif pilihan == 6:
         print("Terima Kasih Program berakhir.")
         break
